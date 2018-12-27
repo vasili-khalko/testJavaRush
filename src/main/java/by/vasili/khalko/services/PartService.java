@@ -9,9 +9,13 @@ public interface PartService {
 
     Part get(Long id);
 
-    void saveOrUpdate(Part part);
+    void add(Part part);
 
-    void  delete(Part part);
+    void update(Part part);
+
+    void  delete(Long id);
 
     List<Part> getAllParts();
+
+    List<Part> getAllPartsByName(String name);
 }

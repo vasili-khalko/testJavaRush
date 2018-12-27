@@ -43,7 +43,12 @@
         <artifactId>hibernate-core</artifactId>
         <version>${hibernate.version}</version>
       </dependency>
-        <!--  Servlet   -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>${hibernate.version}</version>
+      </dependency>
+      <!--  Servlet   -->
       <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>

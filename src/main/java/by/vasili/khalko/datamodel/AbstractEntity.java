@@ -1,5 +1,8 @@
 package by.vasili.khalko.datamodel;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class AbstractEntity {
 
     public abstract Long getId();

@@ -1,13 +1,23 @@
 package by.vasili.khalko.datamodel;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Parts", schema = "test")
 public class Part extends AbstractEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
 
+    @Column
     private boolean need;
 
+    @Column
     private int quantity;
 
     public Long getId() {
@@ -22,9 +32,7 @@ public class Part extends AbstractEntity {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public boolean isNeed() {
         return need;
