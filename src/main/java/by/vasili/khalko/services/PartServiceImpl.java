@@ -1,7 +1,6 @@
-package by.vasili.khalko.services.impl;
+package by.vasili.khalko.services;
 
 import by.vasili.khalko.dataaccess.PartDao;
-import by.vasili.khalko.services.PartService;
 import by.vasili.khalko.datamodel.Part;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
