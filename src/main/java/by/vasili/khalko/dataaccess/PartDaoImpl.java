@@ -32,13 +32,13 @@ public class PartDaoImpl implements PartDao {
         Query query = session.createQuery("from Parts where partsName = :name");
         query.setParameter("name", name);
         List<Part> parts = query.list();
-        return null;
+        return parts;
     }
 
     @Override
     public Part get(Long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Part part = (Part) session.load(Part.class, new Long(id));
+        Part part = session.load(Part.class, id);
         return part;
     }
 
@@ -57,7 +57,7 @@ public class PartDaoImpl implements PartDao {
     @Override
     public void delete(Long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Part part = (Part) session.load(Part.class, new Long(id));
+        Part part = session.load(Part.class, id);
 
         if(part != null){
             session.delete(part);
