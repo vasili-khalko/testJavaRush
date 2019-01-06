@@ -25,19 +25,19 @@ public class PartController {
     }
 
 
-    @RequestMapping("addPart")
+    @RequestMapping("/addPart")
     public ModelAndView addPart(@ModelAttribute Part part){
 
-        return new ModelAndView("partForm");
+        return new ModelAndView("partForm", "part", part);
     }
 
-    @RequestMapping("editPart")
+    @RequestMapping("/editPart")
     public ModelAndView editPart(@RequestParam Long id, @ModelAttribute Part part){
         part = partService.get(id);
         return new ModelAndView("partForm", "partObject", part);
     }
 
-    @RequestMapping("savePart")
+    @RequestMapping("/savePart")
     public ModelAndView savePart(@ModelAttribute Part part) {
         if (part.getId() == 0) {
             partService.add(part);
@@ -48,12 +48,13 @@ public class PartController {
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping("removePart")
+    @RequestMapping("/removePart")
     public ModelAndView removePart(@RequestParam Long id){
         partService.delete(id);
         return new ModelAndView("redirect:/");
     }
 
+    @RequestMapping("/searchPart")
     public ModelAndView searchPart(@RequestParam("searchName") String searchName){
         List<Part> partsList = partService.getAllPartsByName(searchName);
         return new ModelAndView("partsList", "partsList", partsList);

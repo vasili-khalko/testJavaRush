@@ -21,16 +21,17 @@ public class PartDaoImpl implements PartDao {
     @SuppressWarnings("unchecked")
     public List<Part> getAll() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Part> parts = session.createQuery("from Parts").list();
+        List<Part> parts = session.createQuery("from Part").list();
 
         return parts;
     }
 
     @Override
-    public List<Part> getAllByName(String name) {
+    public List<Part> getAllByName(String searchName) {
         Session session = this.sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Parts where partsName = :name");
-        query.setParameter("name", name);
+        //Query query = session.createQuery("from Part where partName =: name");
+        Query query = session.createQuery("from Part P where P.name =: name");
+        query.setParameter("name", searchName);
         List<Part> parts = query.list();
         return parts;
     }

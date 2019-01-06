@@ -2,14 +2,17 @@ package by.vasili.khalko.services;
 
 import by.vasili.khalko.dataaccess.PartDao;
 import by.vasili.khalko.datamodel.Part;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class PartServiceImpl implements PartService {
 
+    @Autowired
     private PartDao partDao;
 
     public Part get(Long id) {
@@ -17,7 +20,6 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
-    @Transactional
     public void add(Part part) {
         this.partDao.add(part);
     }
