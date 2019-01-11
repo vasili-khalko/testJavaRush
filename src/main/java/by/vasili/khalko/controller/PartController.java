@@ -28,13 +28,12 @@ public class PartController {
     @RequestMapping("/addPart")
     public ModelAndView addPart(@ModelAttribute Part part){
 
-        return new ModelAndView("partForm", "part", part);
+        return new ModelAndView("partForm");
     }
 
     @RequestMapping("/editPart")
     public ModelAndView editPart(@RequestParam Long id, @ModelAttribute Part part){
-        part = partService.get(id);
-        return new ModelAndView("partForm", "partObject", part);
+        return new ModelAndView("partForm", "partObject", partService.get(id));
     }
 
     @RequestMapping("/savePart")

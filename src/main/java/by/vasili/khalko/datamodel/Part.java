@@ -15,10 +15,14 @@ public class Part extends AbstractEntity {
     private String name;
 
     @Column
-    private Boolean need;
+    private boolean need;
 
     @Column
-    private Integer quantity;
+    private int quantity;
+
+    public Part() {
+        this.id = Long.valueOf(0);
+    }
 
     public Long getId() {
         return id;
@@ -38,7 +42,7 @@ public class Part extends AbstractEntity {
         return need;
     }
 
-    public void setNeed(Boolean need) {
+    public void setNeed(boolean need) {
         this.need = need;
     }
 

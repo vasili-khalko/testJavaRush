@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.vasili.khalko</groupId>
-    <artifactId>test-crud</artifactId>
+    <artifactId>testJavaRush</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <name>javarushinternship Maven Webapp</name>
     <properties>
         <java-version>1.8</java-version>
         <org.springframework-version>4.3.15.RELEASE</org.springframework-version>
@@ -92,15 +92,17 @@
 
     </dependencies>
     <build>
-      <finalName>PartManager</finalName>
+      <finalName>testJavaRush</finalName>
       <plugins>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
           </configuration>
         </plugin>
+
+
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>

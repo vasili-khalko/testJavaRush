@@ -39,7 +39,7 @@ public class PartDaoImpl implements PartDao {
     @Override
     public Part get(Long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Part part = session.load(Part.class, id);
+        Part part = session.get(Part.class, id);
         return part;
     }
 
