@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -42,6 +44,13 @@ public class PartServiceImpl implements PartService {
     @Override
     public List<Part> getAllPartsByName(String name) {
         return this.partDao.getAllByName(name);
+    }
+
+    @Override
+    public Integer getNumberPcCanBeAssembled() {
+        List<Part> partsIsNeed = this.partDao.getAllByNeed(true);
+        Integer numberPcCanBeAssemled = Collections.min(partsIsNeed, Comparator.comparingInt(Part::getQuantity)).getQuantity();
+        return numberPcCanBeAssemled;
     }
 
 

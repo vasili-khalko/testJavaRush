@@ -9,6 +9,8 @@ public interface PartDao {
 
     List<Part> getAllByName(String name);
 
+    List<Part> getAllByNeed(Boolean isNeed);
+
     Part get(Long id);
 
     void add(Part part);

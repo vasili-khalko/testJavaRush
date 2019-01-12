@@ -64,6 +64,10 @@ public class PartController {
         ModelAndView modelAndView = new ModelAndView("partsList");
 
         List<Part> parts = partService.getAllParts();
+
+        Integer numberPcCanBeAssembled = partService.getNumberPcCanBeAssembled();
+        modelAndView.addObject("numberPcCanBeAssembled", numberPcCanBeAssembled);
+
         PagedListHolder<Part> pagedListHolder = new PagedListHolder<Part>(parts);
         pagedListHolder.setPageSize(MAX_ROWS_PER_PAGE);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());

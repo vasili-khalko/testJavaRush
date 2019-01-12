@@ -29,11 +29,18 @@ public class PartDaoImpl implements PartDao {
     @Override
     public List<Part> getAllByName(String searchName) {
         Session session = this.sessionFactory.getCurrentSession();
-        //Query query = session.createQuery("from Part where partName =: name");
         Query query = session.createQuery("from Part P where P.name =: name");
         query.setParameter("name", searchName);
         List<Part> parts = query.list();
         return parts;
+    }
+
+    @Override
+    public List<Part> getAllByNeed(Boolean isNeed) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Part P where P.need =: isNeed");
+        query.setParameter("isNeed", isNeed);
+        return query.list();
     }
 
     @Override
