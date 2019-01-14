@@ -59,15 +59,61 @@ public class PartController {
         return new ModelAndView("partsList", "partsList", partsList);
     }
 
+//    @RequestMapping(value = "/viewByType")
+//    public ModelAndView viewByType(@RequestParam("selectView") String selectView, Integer page){
+//        List<Part> partsList;
+//        switch (selectView){
+//            case "isNeed":
+//                partsList = partService.getAllPartsByNeed(true);
+//                break;
+//
+//            case "optional":
+//                partsList = partService.getAllPartsByNeed(false);
+//                break;
+//
+//            default:
+//                partsList = partService.getAllParts();
+//                break;
+//        }
+//        ModelAndView modelAndView = new ModelAndView("partsList", "partsList", partsList);
+//
+//        pagination(modelAndView, partsList, page);
+//        return modelAndView;
+//    }
+
     @RequestMapping(value = "/")
-    public ModelAndView listOfParts(@RequestParam(required = false) Integer page){
+    public ModelAndView listOfParts(@RequestParam(required = false) Integer page, String selectView){
         ModelAndView modelAndView = new ModelAndView("partsList");
 
-        List<Part> parts = partService.getAllParts();
+        //List<Part> parts = partService.getAllParts();
+
+        List<Part> parts;
+        if (selectView == null){
+            selectView = "all";
+        }
+        switch (selectView){
+            case "isNeed":
+                parts = partService.getAllPartsByNeed(true);
+                break;
+
+            case "optional":
+                parts = partService.getAllPartsByNeed(false);
+                break;
+
+            default:
+                parts = partService.getAllParts();
+                break;
+        }
 
         Integer numberPcCanBeAssembled = partService.getNumberPcCanBeAssembled();
         modelAndView.addObject("numberPcCanBeAssembled", numberPcCanBeAssembled);
 
+        pagination(modelAndView, parts, page);
+
+        return modelAndView;
+    }
+
+    private void pagination(ModelAndView modelAndView, List<Part> parts, Integer page){
         PagedListHolder<Part> pagedListHolder = new PagedListHolder<Part>(parts);
         pagedListHolder.setPageSize(MAX_ROWS_PER_PAGE);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
@@ -84,6 +130,6 @@ public class PartController {
             pagedListHolder.setPage(page - 1);
             modelAndView.addObject("partsList", pagedListHolder.getPageList());
         }
-        return modelAndView;
     }
+
 }

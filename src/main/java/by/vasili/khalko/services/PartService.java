@@ -20,4 +20,6 @@ public interface PartService {
     List<Part> getAllPartsByName(String name);
 
     Integer getNumberPcCanBeAssembled();
+
+    List<Part> getAllPartsByNeed(Boolean isNeed);
 }

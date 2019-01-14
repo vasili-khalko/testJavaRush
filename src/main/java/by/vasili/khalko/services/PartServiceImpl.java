@@ -53,5 +53,10 @@ public class PartServiceImpl implements PartService {
         return numberPcCanBeAssemled;
     }
 
+    @Override
+    public List<Part> getAllPartsByNeed(Boolean isNeed) {
+        return this.partDao.getAllByNeed(isNeed);
+    }
+
 
 }
