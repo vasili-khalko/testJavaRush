@@ -66,10 +66,12 @@
                     </div>
                 </div>
 
+
                 <div class="form-group">
                     <div class="control-label col-xs-3"><form:label path="need">Need?</form:label></div>
                     <div class="col-xs-6">
-                        <form:input cssClass="form-control" path="need" value="${partObject.need}"/>
+                        <input type="radio" name="need" value="true" <c:if test="${partObject.need=='true'}">checked</c:if>>True</input>
+                        <input type="radio" name="need" value="false" <c:if test="${partObject.need=='false'}">checked</c:if>>False</input>
                     </div>
                 </div>
 

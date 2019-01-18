@@ -59,33 +59,11 @@ public class PartController {
         return new ModelAndView("partsList", "partsList", partsList);
     }
 
-//    @RequestMapping(value = "/viewByType")
-//    public ModelAndView viewByType(@RequestParam("selectView") String selectView, Integer page){
-//        List<Part> partsList;
-//        switch (selectView){
-//            case "isNeed":
-//                partsList = partService.getAllPartsByNeed(true);
-//                break;
-//
-//            case "optional":
-//                partsList = partService.getAllPartsByNeed(false);
-//                break;
-//
-//            default:
-//                partsList = partService.getAllParts();
-//                break;
-//        }
-//        ModelAndView modelAndView = new ModelAndView("partsList", "partsList", partsList);
-//
-//        pagination(modelAndView, partsList, page);
-//        return modelAndView;
-//    }
 
     @RequestMapping(value = "/")
     public ModelAndView listOfParts(@RequestParam(required = false) Integer page, String selectView){
         ModelAndView modelAndView = new ModelAndView("partsList");
 
-        //List<Part> parts = partService.getAllParts();
 
         List<Part> parts;
         if (selectView == null){
